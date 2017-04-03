@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+
+  userclient-node:
+    image: userclient:latest
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
