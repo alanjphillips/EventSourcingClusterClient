@@ -5,4 +5,5 @@ Horizontally scaled out use of Akka Cluster Sharding with Cassandra Cluster conf
 Producer-side
 -------------
 Http interface to start publishing commands
+
 Distribute generated Kafka messages to Kafka partitions across multiple Kafka brokers
