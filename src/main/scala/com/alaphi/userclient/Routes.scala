@@ -24,5 +24,5 @@ class Routes(userMessageGeneratorService: UserMessageGeneratorService) {
 }
 
 object Routes {
-  def apply(somethingToDoService: UserMessageGeneratorService): Routes = new Routes(somethingToDoService)
+  def apply(userMessageGeneratorService: UserMessageGeneratorService): Routes = new Routes(userMessageGeneratorService)
 }
