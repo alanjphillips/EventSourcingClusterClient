@@ -1,8 +1,8 @@
 enablePlugins(JavaAppPackaging)
 
-name := "EventSourcingClusterClient"
+name := "userclient"
 
-version := "1.0"
+version := "latest"
 
 scalaVersion := "2.12.1"
 
@@ -22,4 +22,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka"         %% "akka-http"              % "10.0.0"
 )
 
+packageName in Docker := "userclient"
+version in Docker     := "latest"
         
