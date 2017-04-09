@@ -6,20 +6,27 @@ version := "latest"
 
 scalaVersion := "2.12.1"
 
-val akkaVersion = "2.4.14"
+val akkaVersion          = "2.4.17"
+val akkaHttpVersion      = "10.0.4"
+val akkaKafkaVersion     = "0.14"
+val catsVersion          = "0.9.0"
+val circeVersion         = "0.7.0"
+val akkaHttpCirceVersion = "1.11.0"
 
 resolvers ++= Seq(
   Resolver.bintrayRepo("hseeberger", "maven")
 )
 
 libraryDependencies ++= Seq(
-  "de.heikoseeberger"         %% "akka-http-circe"        % "1.11.0",
-  "io.circe"                  %% "circe-core"             % "0.7.0-M1",
-  "io.circe"                  %% "circe-generic"          % "0.7.0-M1",
-  "io.circe"                  %% "circe-parser"           % "0.7.0-M1",
-  "com.typesafe.akka"         %% "akka-actor"             % akkaVersion,
-  "com.typesafe.akka"         %% "akka-stream-kafka"      % "0.13",
-  "com.typesafe.akka"         %% "akka-http"              % "10.0.0"
+  "de.heikoseeberger" %% "akka-http-circe"      % akkaHttpCirceVersion,
+  "org.typelevel"     %% "cats"                 % catsVersion,
+  "io.circe"          %% "circe-core"           % circeVersion,
+  "io.circe"          %% "circe-generic"        % circeVersion,
+  "io.circe"          %% "circe-parser"         % circeVersion,
+  "com.typesafe.akka" %% "akka-actor"           % akkaVersion,
+  "com.typesafe.akka" %% "akka-stream"          % akkaVersion,
+  "com.typesafe.akka" %% "akka-http"            % akkaHttpVersion,
+  "com.typesafe.akka" %% "akka-stream-kafka"    % akkaKafkaVersion
 )
 
 packageName in Docker := "userclient"
