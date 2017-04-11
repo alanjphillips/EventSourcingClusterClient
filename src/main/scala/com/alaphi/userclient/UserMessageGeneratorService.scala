@@ -3,16 +3,14 @@ package com.alaphi.userclient
 import scala.concurrent.{ExecutionContext, Future}
 
 
-class UserMessageGeneratorService(implicit ec: ExecutionContext) {
+class UserMessageGeneratorService(producer: KafkaProducer, numPartitions: Int = 6)(implicit ec: ExecutionContext) {
 
-  def startGenerating(): Future[String] = {
-    Future {
-      "Started"
-    }
+  def startGenerating(numMsgs: Int): Future[String] = {
+    producer.sendToKafka(numMsgs, numPartitions)
   }
 
 }
 
 object UserMessageGeneratorService {
-  def apply(implicit ec: ExecutionContext): UserMessageGeneratorService = new UserMessageGeneratorService()
+  def apply(producer: KafkaProducer)(implicit ec: ExecutionContext): UserMessageGeneratorService = new UserMessageGeneratorService(producer)
 }

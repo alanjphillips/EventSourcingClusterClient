@@ -8,12 +8,12 @@ import io.circe.generic.auto._
 
 class Routes(userMessageGeneratorService: UserMessageGeneratorService) {
 
-  val UserRoutes = {
+  val userRoutes = {
     path("user" / "generate") {
       post {
         entity(as[GenerateUserData]) { generateUserData =>
-          onComplete(userMessageGeneratorService.startGenerating()) {
-            case Success(s) => complete(s"$s Success")
+          onComplete(userMessageGeneratorService.startGenerating(generateUserData.numMsgs)) {
+            case Success(s) => complete(s)
             case Failure(f) => complete(BadRequest -> s"Failed: $f ")
           }
         }

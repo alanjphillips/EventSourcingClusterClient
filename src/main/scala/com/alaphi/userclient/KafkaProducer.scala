@@ -25,8 +25,8 @@ class KafkaProducer(implicit as: ActorSystem, mat: Materializer, ec: ExecutionCo
       .runWith(Producer.plainSink(producerSettings))
 
     done.map { d =>
-      as.log.info(s"sendToKafka DONE: $d")
-      d.toString
+      as.log.info(s"Finished sending to Kafka: $d")
+      s"Sent $numMsgs to $numPartitions Partitions on Kafka"
     }
   }
 

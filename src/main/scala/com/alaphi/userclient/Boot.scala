@@ -13,10 +13,12 @@ object Boot extends App {
 
   val config = ConfigFactory.load()
 
-  val userMessageGeneratorService = UserMessageGeneratorService(executionContext)
+  val producer = KafkaProducer()
+
+  val userMessageGeneratorService = UserMessageGeneratorService(producer)
 
   val routes = Routes(userMessageGeneratorService)
 
-  val bindingFuture = Http().bindAndHandle(routes.UserRoutes, "0.0.0.0", 8081)
+  val bindingFuture = Http().bindAndHandle(routes.userRoutes, "0.0.0.0", 8081)
 
 }
